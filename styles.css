@@ -1,0 +1,346 @@
+
+
+/* Global =========================================== */
+/*o css usa um conceito de variáveis onde podemos usar uma mesma config. em qualquer local*/
+:root {
+  --dark-blue: #363f5f;
+  --green: #49aa26;
+  --light-green: #3dd705;
+  --red: #e92929;
+}
+
+/* usando o "*" indicamos que queremos mudar tudo, pois ele é um seletor universal */
+* {
+  /*e o espaçamento entre um elemento e outro*/
+  margin: 0;
+  /*preenchimento interno dos elementos*/
+  padding: 0;
+  /*como está sendo a madida da caixa*/
+  box-sizing: border-box;  
+}
+
+/*usamos a regra de 3 que é feita assim; (100 * 15) / 16 = 93.75*/
+html {
+  font-size: 93.75%;
+}
+
+body {
+  background: #f0f2f5;
+  /*usando a fonte que está no arquivo index que pegamos do google fontes*/
+  font-family: 'Poppins', sans-serif;
+}
+
+/*um trick que mante os conteúdos na tela apenas para os leitores de tela, para nós ele não está visível*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/*chamando a classe, usamos sempre o "."*/
+.container {
+  /*usando uma função que procura o menor entre dois valores, "vw" é viewport ou em porcentagem*/
+  width: min(90vw, 800px);
+  margin: auto;
+}
+
+
+/* Titles  =========================================== */
+h2 {
+  /*espaço na vertical entre os h2*/
+  margin-top: 3.2rem;
+  /*espaço abaixo*/
+  margin-bottom: 0.8rem;
+  /*chamando a variável para alterar a cor*/
+  color: var(--dark-blue);
+  font-weight: normal;
+}
+
+
+/* Lins & Buttons  =========================================== */
+a {
+  color: var(--green);
+  /*retira o underline*/
+  text-decoration: none;
+}
+
+/*serve para quando passar o mouse em cima do link mudar para está cor*/
+a:hover {
+  color: var(--light-green);
+}
+
+button {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+
+  color: white;
+  background: var(--green);
+
+  padding: 0;
+
+  border-radius: .25rem;
+
+  /*forma de quando passar o cursos aparecer uma mãozinha*/
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--light-green);
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: .8rem;
+}
+
+.button.cancel {
+  color: var(--red);
+  border: 2px var(--red) solid;
+  border-radius: 0.25rem;
+
+  height: 50px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0.6;
+}
+
+.button.cancel:hover {
+  opacity: 1;
+}
+
+
+/* Header =========================================== */
+header {
+  background: #2d4a22;
+  /*o "rem" é uma unidade de medida*/
+  padding: 2rem 0 10rem;
+  text-align: center;
+}
+
+/*camando o id logo, usamos sempre o "#"*/
+#logo {
+  color: #fff;
+  /*alterando o peso ou leveza da fonte*/
+  font-weight: 100;
+}
+
+
+/* Balance =========================================== */
+#balance {
+  margin-top: -8rem;
+}
+
+#balance h2 {
+  color: #fff;
+  margin-top: 0;
+}
+
+
+/* Cards =========================================== */
+.card {
+  background: #fff;
+  /*preenchimento interno*/
+  padding: 1.5rem 2rem;
+  /*arredondamento das bordas*/
+  border-radius: 0.25rem;
+  /*os cartões estão todos juntos, vamos seprar eles*/
+  margin-bottom: 2rem;
+  color: var(--dark-blue);
+}
+
+.card h3 {
+  font-weight: normal;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card p {
+  font-size: 2rem;
+  /*e o espaçamento na separação da linha*/
+  line-height: 3rem;
+  margin-top: 1rem;
+}
+
+/*aqui indica que procuramos a classe card e outra classe total, Obs. pocuramos duas classes*/
+.card.total {
+  background: var(--green);
+  color: #fff;
+}
+
+
+/* Table =========================================== */
+#transaction {
+  /*para escrolar a tabela no mobile devemos deixar assim como block*/
+  display: block;
+  /*ativa o scrol laterial*/
+  overflow-x: auto;
+}
+
+#data-table {
+  /*ocupa a largura 100%*/
+  width: 100%;
+  /*lida com as bordas da tabela*/
+  border-spacing: 0 0.5rem;
+  color: #969cb3;
+}
+
+/*fazendo os cantos arredondados do lado direito*/
+table thead tr th:first-child,
+table tbody tr td:first-child {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+/*fazendo os cantos arredondados do lado esquerdo*/
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem;
+}
+
+table th {
+  background: #fff;
+  font-weight: normal;
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+table td {
+  background: #fff;
+  padding: 1rem 2rem;
+}
+
+/*fazendo o movimento de quando o mouse passa em cima da linha*/
+table tbody tr:hover {
+  opacity: 1;
+}
+
+table tbody tr {
+  opacity: 0.7;
+}
+
+td.description {
+  color: var(--dark-blue);
+}
+
+td.income {
+  color: #12a454;
+}
+
+td.expense {
+  color: var(--red);
+}
+
+
+/* Modal =========================================== */
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0,0,0,0.7);
+
+  position: fixed;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  /*quando falamos de "z" estamos falando de empilhamento de elementos*/
+  /*o z index e distravados quando usamos o position*/
+  z-index: 999;
+}
+
+/*com isso meu model está criado*/
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: #f0f2f5;
+  padding: 2.4rem;
+  
+  position: relative;
+  /*remove o bag que fica ao abrir o modal que mostra o radape*/
+  z-index: 1;
+}
+
+
+/* Form =========================================== */
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+
+  padding: 0.8rem;
+
+  width: 100%;
+}
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+  width: 48%;
+}
+
+
+/* Footer =========================================== */
+footer {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  color: var(--dark-blue);
+  opacity: 0.6;
+}
+
+
+/* Responsive =========================================== */
+/*abaixo siginifica que até 800px pega essa config. abaixo se não pega a lá de cima*/
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    /*usando uma para repetir as 1fr = frações*/
+    grid-template-columns: repeat(3, 1fr);
+    /*faz um distanciamento entre as caixas*/
+    gap: 2rem;
+  }
+}
